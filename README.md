@@ -12,5 +12,5 @@ Déploiement d'un serveur Ansible conteneurisé via Docker-compose. Docker-compo
 
 - third :
 ```
-Félicitations, vous avez un serveur ansible (conteneurisé via docker) qui tourne sous Ubuntu 18.04. A vos configs d'ansible Messieurs. 🤗
+Félicitations, vous avez un conteneur ansible-server qui tourne sous Ubuntu 18.04. A vos configs d'ansible Messieurs. 🤗
 ```
