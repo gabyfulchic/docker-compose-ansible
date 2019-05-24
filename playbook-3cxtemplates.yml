@@ -1,0 +1,12 @@
+---
+
+- name: Deploy 3cx mail templates Made For Easylia
+  copy:
+    src: file-template
+    dest: /var/lib/3cx
+    owner: 
+    group: 
+    mode: 
+
+- name: Reload 3cx services
+  notify: 3cx-reload 
