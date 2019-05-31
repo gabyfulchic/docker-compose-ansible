@@ -8,5 +8,7 @@
     group: admins
     mode: 0755
 
-- name: Reload random service
-notify: random_service-reload
+- name: Reload a random service
+  service: 
+    name: sshd
+    state: restarted
