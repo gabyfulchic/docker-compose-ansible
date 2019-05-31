@@ -14,5 +14,6 @@
 
 - third :
 ```
-Félicitations, vous avez un conteneur ansible-server qui tourne sous Debian Stretch avec python3-6-8. A vos configs d'ansible Messieurs. 🤗
+Félicitations, vous avez un conteneur ansible-server qui tourne sous Debian Stretch
+avec python3-6-8. A vos configs d'ansible Messieurs. 🤗
 ```
