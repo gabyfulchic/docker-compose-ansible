@@ -3,12 +3,15 @@ MAINTAINER Gaby Fulchic <gaby.fulchic@ynov.com>
 
 # Pre-requis
 RUN apt-get update -y && apt-get upgrade -y &&\
-    apt-get install ca-certificates -y
+    apt-get install ca-certificates sudo -y
 
 # Configuration utilisateur
 RUN groupadd admins &&\
     useradd -m -a -G admins gabyfulchic -p gabyfulchic --uid 42 &&\
     usermod --shell /bin/bash gabyfulchic
+
+# Push sudoer file
+COPY admins /etc/suoders.d/
 
 # Dossiers utiles
 RUN mkdir -p /home/gabyfulchic/ansible/ && mkdir -p /home/gabyfulchic/.ssh/

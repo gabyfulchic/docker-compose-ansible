@@ -2,7 +2,7 @@
 
 - name: Deploy random file for testing
   copy:
-    src: random_file
+    src: files/random_file
     dest: /home/gabyfulchic/random_file
     owner: gabyfulchic
     group: admins

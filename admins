@@ -1,0 +1,4 @@
+## Définition des droits sudo du groupe admins
+%admins ALL=(ALL) NOPASSWD:ALL
+
+
