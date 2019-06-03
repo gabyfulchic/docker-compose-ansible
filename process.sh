@@ -14,4 +14,4 @@ echo "stdout to resultsFile by >>" >> $resultsFile
 ansible-playbook --syntax-check --verbose playbooks/random-playbook.yml >> $resultsFile
 echo "stdout to resultsFile by | tee" >> $resultsFile
 ansible-playbook --syntax-check --verbose playbooks/random-playbook.yml | tee $resultsFile
-
+ 
