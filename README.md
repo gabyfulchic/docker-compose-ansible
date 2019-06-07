@@ -1,16 +1,22 @@
 # Docker-compose-ansible (In Development)  
 [![License](https://img.shields.io/badge/License-Unlicense-yellow.svg)](https://github.com/gabyfulchic/docker-compose-ansible/blob/master/LICENSE)  
+```
 > Déploiement d'un serveur Ansible conteneurisé avec Docker-compose. Docker-compose étant une surcouche à la cmd Docker pour run des
-> containers depuis un fichier .yaml/.yml avec une simple commande.   
+> containers depuis un fichier .yaml/.yml avec une simple commande.
+```  
 
 # Utilisation du repo
 
-- first :  
-> git clone https://github.com/gabyfulchic/docker-compose-ansible.git  
+- first :
+```ruby  
+> git clone https://github.com/gabyfulchic/docker-compose-ansible.git
+```  
 
-- second : 
+- second :
+```ruby   
 > cd docker-compose-ansible/  
-> docker-compose up  
+> docker-compose up
+```  
 
 - third :
 ```
