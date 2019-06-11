@@ -1,0 +1,28 @@
+# Made by Gaby FULCHIC
+# For https://github.com/gabyfulchic/docker-compose-ansible
+# docker --version > 18.09.06 -> docker-compose : 3.7
+
+version: "3.7"
+services:
+  ansible:
+    build: ./toBuild
+    image: ansible-server:1.0.0
+    ports:
+      - "22:22"
+    labels:
+      - "ansible-server"
+#  slaves:
+#    image: debian:9.9
+#    deploy:
+#      replicas: 3 
+#      ressources:
+#        limits:
+#          cpus: 
+#          memory:
+#    ports:
+#      - "22:22"
+      
+
+
+
+
