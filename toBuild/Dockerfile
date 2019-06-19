@@ -34,7 +34,7 @@ ADD playbooks /home/gabyfulchic/ansible/playbooks
 #    apt update -y && apt install ansible -y 
 
 ## Install the binary ansible (PIP)
-RUN pip install ansible
+RUN sudo pip install ansible
 
 RUN { hostname; \
  whoami; \
