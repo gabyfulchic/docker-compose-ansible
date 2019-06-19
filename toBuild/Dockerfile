@@ -3,12 +3,13 @@ MAINTAINER Gaby Fulchic <gaby.fulchic@ynov.com>
 
 ## Pre-requis
 RUN apt-get update -y && apt-get upgrade -y &&\
-    apt-get install ca-certificates sudo -y
+ apt-get install ca-certificates sudo -y &&\
+ apt install apt-utils -y
 
 ## Configuration utilisateur
 RUN groupadd admins &&\
-    useradd -m -a -G admins gabyfulchic -p gabyfulchic --uid 42 &&\
-    usermod --shell /bin/bash gabyfulchic
+ useradd -m -G admins gabyfulchic -p gabyfulchic --uid 42 &&\
+ usermod --shell /bin/bash gabyfulchic
 
 ## Push sudoer file
 COPY admins /etc/suoders.d/
@@ -36,12 +37,12 @@ ADD playbooks /home/gabyfulchic/ansible/playbooks
 RUN pip install ansible
 
 RUN { hostname; \
-    whoami; \
-    echo $UID; \
-    echo $SHELL; \
-    python -V; \
-    pip --version; \
-    ansible --version; } > /home/easylia/.environment/versions
+ whoami; \
+ echo $UID; \
+ echo $SHELL; \
+ python -V; \
+ pip --version; \
+ ansible --version; } > /home/easylia/.environment/versions
 
 ENTRYPOINT /bin/sh
 CMD process.sh
