@@ -1,14 +1,12 @@
 ---
 
-- name: Deploy random file for testing
-  copy:
-    src: files/random_file
-    dest: /home/gabyfulchic/random_file
-    owner: gabyfulchic
-    group: admins
-    mode: 0755
-
-- name: Reload a random service
-  service: 
-    name: sshd
-    state: restarted
+- hosts: samplehost
+  
+  tasks:
+  - name: Deploy random file for testing
+    copy:
+      src: files/random_file
+      dest: /home/gabyfulchic/random_file
+      owner: gabyfulchic
+      group: admins
+      mode: 0755

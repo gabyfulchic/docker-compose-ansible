@@ -8,23 +8,30 @@ RUN apt-get update -y && apt-get upgrade -y &&\
 
 ## Configuration utilisateur
 RUN groupadd admins &&\
- useradd -m -G admins gabyfulchic -p gabyfulchic --uid 42 &&\
- usermod --shell /bin/bash gabyfulchic
+ useradd -m -G admins gabyfulchic --password gabyfulchic --uid 42
 
-## Push sudoer file
-COPY admins /etc/suoders.d/
+## Sudo conf
+ADD sudoers.d/admins /etc/sudoers.d/
 
-## Dossiers utiles
-RUN mkdir -p /home/gabyfulchic/ansible/ && mkdir -p /home/gabyfulchic/.ssh/
-
-## Accés au fichier d'info rapidement
-ENV envContext="/home/gabyfulchic/.environment/versions"
-
+## Conf de l'environnement
 USER gabyfulchic
 WORKDIR /home/gabyfulchic
 
+## Dossiers utiles
+RUN mkdir -p /home/gabyfulchic/ansible/ &&\
+ mkdir -p /home/gabyfulchic/.ssh/ &&\
+ mkdir -p /home/gabyfulchic/.environment/
+
 ## Si des playbooks en plus : les rajouter dans le bon dossier
-ADD playbooks /home/gabyfulchic/ansible/playbooks
+ADD playbooks /home/gabyfulchic/ansible/playbooks/
+ADD ./ansible.cfg /home/gabyfulchic/ansible
+ADD ./inventory.ini /home/gabyfulchic/ansible
+ADD ./process.sh /home/gabyfulchic/
+
+## Configuration utilisateur v2
+RUN sudo usermod --shell /bin/bash gabyfulchic &&\
+ sudo chmod +x /home/gabyfulchic/process.sh
+
 ## Si : Paire de clé déja existante
 # COPY rsa_keys /home/gabyfulchic/.ssh/
 
@@ -35,14 +42,16 @@ ADD playbooks /home/gabyfulchic/ansible/playbooks
 
 ## Install the binary ansible (PIP)
 RUN sudo pip install ansible
+RUN { echo " - hostname: `hostname`"; \
+ echo " - user: `whoami`"; \
+ echo " - PYTHON -V : `python -V`"; \
+ echo " - PIP -V : `pip --version`"; \
+ echo " - ANSIBLE INFOS >"; \
+ echo "   `ansible --version`"; } > /home/gabyfulchic/.environment/versions
 
-RUN { hostname; \
- whoami; \
- echo $UID; \
- echo $SHELL; \
- python -V; \
- pip --version; \
- ansible --version; } > /home/easylia/.environment/versions
+## Accés au fichier d'info rapidement
+ENV envContext="/home/gabyfulchic/.environment/versions"
 
-ENTRYPOINT /bin/sh
-CMD process.sh
+## Lancement du script de test de syntaxe des playbooks
+# ENTRYPOINT 
+CMD ["/bin/bash", "/home/gabyfulchic/process.sh"]
