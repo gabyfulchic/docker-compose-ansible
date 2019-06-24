@@ -16,5 +16,5 @@ sudo mkdir -p $resultsFolder &&\
 	sudo chown gabyfulchic:admins -R $resultsFolder
 
 echo 'stdout to resultsFile by >>' >> $resultsFile
-ansible all --list-hosts
-ansible-playbook -i remote-hosts.ini --syntax-check --verbose ansible/playbooks/random-playbook.yml >> $resultsFile
+# ansible samplehost --list-hosts
+# ansible-playbook -i remote-hosts.ini --syntax-check --verbose ansible/playbooks/random-playbook.yml >> $resultsFile
