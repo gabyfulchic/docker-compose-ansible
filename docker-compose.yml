@@ -7,23 +7,20 @@ services:
   ansible:
     build: ./toBuild
     image: ansible-server:1.0.0
+    container_name: ansible
     command: tail -f /home/gabyfulchic/ansible/playbooks/random-playbook.yml
     ports:
       - "2222:22"
     labels:
-      - "ansible-server"
+      - "ansible"
+
 #  slaves:
 #    image: debian:9.9
 #    deploy:
-#      replicas: 3 
+#      replicas: 3
 #      ressources:
 #        limits:
-#          cpus: 
+#          cpus:
 #          memory:
-#    ports:
-#      - "22:22"
-      
-
-
-
-
+#      labels:
+#       - "ansible"
